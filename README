@@ -4,3 +4,10 @@ from 2018.11.07
 
 Language:Python2
 IDE: Pycharm
+
+
+关于图像中点的标定和跟踪：
+https://www.w3cschool.cn/opencv/opencv-9eh32eby.html
+虽然是C++实现的，但是因为是中文的，所以也应该具备一定参考价值。
+而且可以从这篇文章的前面的文章学到些东西。比较全面。
+可能的话，希望能找到py版本的。
