@@ -2,5 +2,5 @@ This is the project for camera calibration.
 
 from 2018.11.07
 
-Language:Python2
-IDE: Pycharm
+Language:Python2.7
+IDE: Pycharm Commuity Edition
