@@ -2,8 +2,10 @@ This is the project for camera calibration.
 
 from 2018.11.07
 
-Language:Python2
-IDE: Pycharm
+Language:Python2.7.15
+IDE: Pycharm Community Edition
+Caffe 
+Ubuntu:16.04
 
 
 关于图像中点的标定和跟踪：
