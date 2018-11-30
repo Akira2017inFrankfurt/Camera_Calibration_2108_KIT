@@ -1,20 +1,19 @@
 This is the project for camera calibration.
 
-from 2018.11.07
+Time: from 2018.11.07
+Group: Hongliang He, Yang Zhang, Minghua Li, Qianliang Huang
 
-Language:Python2.7.15
+Language:Python 2.7.15
 IDE: Pycharm Community Edition
-Caffe 
-Ubuntu:16.04
+Framework: Caffe 
+System: Ubuntu:16.04
+
+Keywords: Deep Learning, Human Re-indentification, Camera Calibration, Openpose
 
 
-关于图像中点的标定和跟踪：
+About the keypoints tracking (implemented with C++):
 https://www.w3cschool.cn/opencv/opencv-9eh32eby.html
-虽然是C++实现的，但是因为是中文的，所以也应该具备一定参考价值。
-而且可以从这篇文章的前面的文章学到些东西。比较全面。
-可能的话，希望能找到py版本的。 （done） 找到一本，已上传。
 
-minimaler solver
+minimaler solver for frame
 https://github.com/PavelTrutman/Automatic-Generator
-更新版
 https://github.com/PavelTrutman/Minimal-Problem-Solver-Generator
