@@ -51,3 +51,5 @@ def s_e_d(u1, u2, F):
         sum = 0
         sum = temp[0][col_index] + temp[1][col_index] + temp[2][col_index]
         e.append(sum * scales[col_index])
+
+    return e
