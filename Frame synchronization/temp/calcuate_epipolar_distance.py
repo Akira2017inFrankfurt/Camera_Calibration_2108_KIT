@@ -17,8 +17,8 @@ def s_e_d(u1, u2, F):
     l_1 = np.dot(F.T, u2)
 
     # 3 * 80 = 240 * 1
-    u_2_reshape = np.reshape(u2.T, (len(u2) * len(u2[0], 1)))
-    l_2_reshape = np.reshape(l_2.T, (len(l_2) * len(l_2[0], 1)))
+    u_2_reshape = np.reshape(u2.T, (len(u2) * len(u2[0]), 1))
+    l_2_reshape = np.reshape(l_2.T, (len(l_2) * len(l_2[0]), 1))
 
     # 240
     length_u_2 = len(u_2_reshape)
@@ -50,4 +50,4 @@ def s_e_d(u1, u2, F):
     for col_index in range(len(u_2_reshape) / 3):
         sum = 0
         sum = temp[0][col_index] + temp[1][col_index] + temp[2][col_index]
-        e.append(sum * scales)
+        e.append(sum * scales[col_index])
