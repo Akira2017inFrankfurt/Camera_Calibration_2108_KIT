@@ -2,4 +2,4 @@ last edition
 test file is in the temp folder
 xxoffset.txt means xx frame shift, the real time shift β is 
 β = xx/fps（considering now we only use camera with same fps）
-please change the filepath_tracks(line 42) in load_tracks.py to test
+please change the filepath_tracks(line 42) in load_tracks.py to use the testtracks
