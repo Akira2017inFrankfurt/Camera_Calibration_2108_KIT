@@ -1,1 +1,3 @@
-
+last edition
+test file is in the temp folder
+change the filepath_tracks(line 42) in load_tracks.py to test the programm
