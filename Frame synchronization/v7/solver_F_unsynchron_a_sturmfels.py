@@ -8,7 +8,6 @@ Created on 14 Jan 2019
 
 import numpy as np
 from scipy import linalg
-from inandout import writetofile
 from rref import rref
 
 
@@ -3106,46 +3105,15 @@ def solver_F_unsynchron_a_sturmfels(F11, F21, F31, F41, F51, F61, F71):
     for i in iter_temp:
         A[15][i] = 0 - M[111][amcols[i]]
 
-    ''''
-    Res = open('error.txt', 'w')
-    Res.close()
-    errortest(A, r'C:\Users\hhl\Documents\GitHub\TwoViewUnsynch_original\TwoViewUnsynch-master\ma_A.txt')
-    '''
-    D, V = linalg.eig(A)
-    ''''
-    errortest(V.real, r'C:\Users\hhl\Documents\GitHub\TwoViewUnsynch_original\TwoViewUnsynch-master\ma_V_real.txt', float)
-    errortest(V.imag, r'C:\Users\hhl\Documents\GitHub\TwoViewUnsynch_original\TwoViewUnsynch-master\ma_V_imag.txt', float)
-    '''
-    # for test the left part ,use D and V from Matlab Result ,compare the output
-    '''
-    filepath = r'C:\Users\hhl\Documents\GitHub\TwoViewUnsynch_original\TwoViewUnsynch-master\ma_V_real.txt'
-    data_real = test(filepath)
-    data_real = np.reshape(data_real, (16, 16))
-    filepath = r'C:\Users\hhl\Documents\GitHub\TwoViewUnsynch_original\TwoViewUnsynch-master\ma_V_imag.txt'
-    data_imag = test(filepath)
-    data_imag = np.reshape(data_imag, (16, 16))
 
-    mat_V = np.zeros((16, 16), dtype=np.complex128)
-    mat_V.real = data_real
-    mat_V.imag = data_imag
-     V = mat_V
-    '''
+    D, V = linalg.eig(A)
+
 
     temp_V=np.zeros((1,16), dtype=np.complex128)
     temp_V[0] = V[0]
 
-    '''''
-    Res = open('solver_temp_sol.txt', 'w')
-    Res.close()
-    writetofile(V[ 8:2:-1 ], str('temp1_sol'), str('solver_temp_sol.txt') )
-    writetofile(np.dot(np.ones((6, 1)), temp_V), str('temp2_sol'), str('solver_temp_sol.txt'))
-    '''
     sol =  V[ 6:0:-1 ] / np.dot(np.ones((6, 1)), temp_V)
 
-    '''
-    errortest(sol.real, r'C:\Users\hhl\Documents\GitHub\TwoViewUnsynch_original\TwoViewUnsynch-master\ma_sol_real.txt', float)
-    errortest(sol.imag, r'C:\Users\hhl\Documents\GitHub\TwoViewUnsynch_original\TwoViewUnsynch-master\ma_sol_imag.txt', float)
-    '''
     withNan_insol= np.isnan(sol.flatten())
 
     if np.any(withNan_insol):
@@ -3170,11 +3138,7 @@ def solver_F_unsynchron_a_sturmfels(F11, F21, F31, F41, F51, F61, F71):
         f = sol[5, new_shape].real
     return a, b, c, d, e, f
 
-# for test
-'''
-a, b, c, d, e, f = solver_F_unsynchron_a_sturmfels(data[:, 0], data[:, 1], data [:, 2], data[:, 3], data[:, 4], data[:, 5], data[:, 6])
-print a
-'''''
+
 
 
 

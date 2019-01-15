@@ -14,19 +14,20 @@ Res = open('result_compute_Ft.txt', 'w')
 Res.close()
 '''
 
-def Trackslist2Mat(Matlist, n_tracks):
-	temp_M = np.zeros((n_tracks, 3))
-	count=0
-	for i in xrange(temp_M.shape[0]):
-		for j in xrange(temp_M.shape[1]):
-			temp_M[i][j] = Matlist[count]
+def tracks_List2Mat(tracks_List, n_tracks):
+	temp = np.zeros((n_tracks, 3))
+	count = 0
+	row , col = temp.shape
+	for i in xrange(row):
+		for j in xrange(col):
+			temp[i][j] = tracks_List[count]
 			count += 1
-	Matlist = temp_M
-	return Matlist
+	tracks_Mat= temp
+	return tracks_Mat
 
-def load_tracks(filepath):
+def load_tracks(filepath_tracks):
 
-	f = open(filepath, 'r')
+	f = open(filepath_tracks, 'r')
 	tracks=[]
 	tracks_num=[]
 	for line in f.readlines():
@@ -35,63 +36,40 @@ def load_tracks(filepath):
 		n_tracks = int(floatline[0])
 		tracks_num.append(n_tracks)
 		linetracks = floatline[1: 3 * n_tracks + 1]
-		tracks.append(Trackslist2Mat(linetracks, n_tracks))
+		tracks.append(tracks_List2Mat(linetracks, n_tracks))
 
 	return tracks, tracks_num
 
-filepath_tracks = r'D:\Praktikum\literatur_Frame\-20offset.txt'
+filepath_tracks = r'D:\Praktikum\literatur_Frame\20offset.txt'
 
-test_num = 1
+rounds_test = 1
 fps1 = 10.0
 fps2 = 10.0
 offset1 = 0.0
 offset2 = 0.0
 thr = 0.1
 rounds_ransac = 50
-iter_rounds = 50
+rounds_iteration = 50
 k_max = 6
 k_min = 0
 
 Res = open('result.txt', 'w')
-
-s = str(filepath_tracks)
-Res.write(s)
-Res.write('\n')
-
-Res.write('thr ')
-s = str(thr)
-Res.write(s)
-Res.write('\n')
-
-Res.write('rounds_ransac ')
-s = str(rounds_ransac)
-Res.write(s)
-Res.write('\n')
-
-Res.write('offset2')
-Res.write('\n')
-
+Res.write('filepath_tracks is %s. \nthr is %s. \nrounds_ransac is %s. \n' % (filepath_tracks, thr, rounds_ransac))
 Res.close()
 
 source_tracks, source_num = load_tracks(filepath_tracks)
 
-for i in xrange(test_num):
+for i in xrange(rounds_test):
 
-	Ftres, dts, offset2, Ft_inliners, emin_Ft, step = compute_Ft(source_tracks, source_num, fps1, fps2, offset1, offset2, thr, rounds_ransac, iter_rounds, k_max, k_min, debug=False)
+	Ftres, dts, offset2, Ft_inliners, emin_Ft, step = compute_Ft(source_tracks, source_num, fps1, fps2, offset1, offset2, thr, rounds_ransac, rounds_iteration, k_max, k_min, debug=False)
 
 	Res = open('result.txt', 'a')
 
-	'''
 	Res.write('\n Ftres is \n')
-	s = str(Ftres)
+	s = np.array2string(Ftres, formatter={'float_kind': lambda Ftres: "%.4f" % Ftres})
 	Res.write(s)
-	'''
 
-	s = str(float(offset2))
-	Res.write(s)
-	Res.write(', ')
-	Res.write('\n')
-
+	Res.write('\noffset2, %f, \n ' % offset2)
 	Res.close()
 
 

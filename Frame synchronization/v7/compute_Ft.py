@@ -7,14 +7,13 @@ Created on 14 Jan 2019
 """
 
 import numpy as np
-from generate_corresp import generate_corresp
+from generate_correspondence import generate_correspondence
 from ransac_Ft import ransac_Ft
 
 # for test
 from inandout import writetofile
 
-def compute_Ft(tracks, num_tracks, fps1, fps2, offset1, offset2, thr, rounds_ransac, iter_rounds, k_max, k_min, debug = False):
-
+def compute_Ft (tracks, num_tracks, fps1, fps2, offset1, offset2, thr, rounds_ransac, rounds_iteration, k_max, k_min, debug=False):
 
 	# before run function ransac_Ft, first clear the earlier data in txt
 	if debug:
@@ -27,7 +26,7 @@ def compute_Ft(tracks, num_tracks, fps1, fps2, offset1, offset2, thr, rounds_ran
 	Ft_inliners = []
 	inliners = 0
 
-	# step is a array, dimension is bigger as iteration times, here is the iter_rounds
+	# step is a array, dimension is bigger as iteration times, here is the rounds_iteration
 	step = np.zeros((50, 1))
 	step[0]= 2**k_min
 	scale = k_min
@@ -36,11 +35,11 @@ def compute_Ft(tracks, num_tracks, fps1, fps2, offset1, offset2, thr, rounds_ran
 	r = 0
 	dts = np.zeros((50, 1))
 
-	for i in xrange(iter_rounds):
+	for i in xrange(rounds_iteration):
 
 		if debug :
 			writetofile(i, str(' Iteration time '), writefilename)
-		tracks1_corresp, tracks2_corresp = generate_corresp(tracks, num_tracks, fps1, fps2, offset1, offset2)
+		tracks1_corresp, tracks2_corresp = generate_correspondence(tracks, num_tracks, fps1, fps2, offset1, offset2)
 
 
 		if debug:

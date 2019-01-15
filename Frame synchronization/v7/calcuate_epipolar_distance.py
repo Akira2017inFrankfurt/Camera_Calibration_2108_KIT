@@ -9,7 +9,7 @@ Created on 02 Dec 2018
 import numpy as np
 import math
 
-def s_e_d(u1, u2, F):
+def symmetric_epipolar_distance(u1, u2, F):
     l_2 = np.dot(F, u1)
     l_1 = np.dot(F.conj().T, u2)
 
