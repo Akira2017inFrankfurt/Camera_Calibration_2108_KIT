@@ -1,0 +1,3 @@
+errorample里可以看图片，关注红色星样的标记，huang的识别肩膀后面转移到其他人那里了
+正确应该向rightsample里的那样，始终固定在huang
+名字 _A_B_C  A代表 识别的部位编号（0 到10），B代表输入里的第几帧， C=1代表left ,C=2代表right
