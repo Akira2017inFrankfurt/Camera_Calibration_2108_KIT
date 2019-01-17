@@ -203,6 +203,7 @@ def get_best_correspondences(list_m, list_n):
 
 		#index i represent the sequence of people in openpose json file
 		#index j represent the id in openvino
+		# change @Hongliang
 		list_m2m.append([min_value, (index_i, int(list_n[index_j][0]))])
 		list_m2n = []
 
@@ -259,6 +260,7 @@ def create_correspondence_points_list(path_left, path_right, left_center_points_
 				temp_reid_index_right = temp_best_right[j][1][1]
 				temp_pose_index_left = temp_best_left[i][1][0]
 				temp_pose_index_right = temp_best_right[j][1][0]
+				# change @Hongliang
 				if temp_reid_index_left == temp_reid_index_right:
 					correspondences_points_matrix_left.append(temp_use_keypoints_left[temp_pose_index_left])
 					correspondences_points_matrix_right.append(temp_use_keypoints_right[temp_pose_index_right])
